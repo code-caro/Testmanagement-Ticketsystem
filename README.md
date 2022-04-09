@@ -5,7 +5,9 @@ IDE:
 Eclipse 2022-03
 
 Databasemanagement system: 
-MySQL80
+MySQL80, localhost:3306
 
 Webcontainer/Webserver: 
-Apache Tomcat 9.0
+Apache Tomcat 9.0, localhost:8080
+
+user: admin, password:12345-SQL
