@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+    version="2.3">
+    
+    <application>
+    	<system-event-listener>
+    		<system-event-listener-class>CustomSystemEventListener</system-event-listener-class>
+    		<system-event-class>javax.faces.event.PostConstructApplicationEvent</system-event-class>
+    	</system-event-listener>
+    	<system-event-listener>
+    		<system-event-listener-class>CustomSystemEventListener</system-event-listener-class>
+    		<system-event-class>javax.faces.event.PreDestroyApplicationEvent</system-event-class>
+    	</system-event-listener>
+    </application>
+    
+    <managed-bean>
+        <managed-bean-name>requirement</managed-bean-name>
+        <managed-bean-class>Requirement</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>reqcontroller</managed-bean-name>
+        <managed-bean-class>ReqController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>testcase</managed-bean-name>
+        <managed-bean-class>TestCase</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>testcasecontroller</managed-bean-name>
+        <managed-bean-class>TestCaseController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ticket</managed-bean-name>
+        <managed-bean-class>Ticket</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ticketcontroller</managed-bean-name>
+        <managed-bean-class>TicketController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>user</managed-bean-name>
+        <managed-bean-class>User</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>usercontroller</managed-bean-name>
+        <managed-bean-class>UserController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+     <managed-bean>
+        <managed-bean-name>logincontroller</managed-bean-name>
+        <managed-bean-class>LoginController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>webapp</managed-bean-name>
+        <managed-bean-class>Webapp</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    
+
+</faces-config>

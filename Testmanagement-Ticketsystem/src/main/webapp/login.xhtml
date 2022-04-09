@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:mj="http://mojarra.dev.java.net/mojarra_ext"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Testmanagement - Login</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</h:head> 
+<body> 
+	<div class="site">
+		<!-- Header -->
+		<div id="header" class="bg-dark text-white">
+			<div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<div class="headerElementL boxL my-2">
+						Testmanagement
+				</div>	    		
+			</div>
+		</div>
+		
+	<!-- Content -->
+		<div class="main">
+			<div class="container">
+				<h2 class="pt-3 my-3"><h:outputText value="Login" /></h2>
+			</div>
+			
+			<div class="container pt-3 my-3">
+			  	<h:form>
+			    	<h:panelGrid columns="2" class="mt-2 d-flex flex-wrap">
+							<h:outputText class="mt-2" value="Benutzername"/>
+						    <h:inputText id="name" class="ms-4" label="Benutzername" value="#{logincontroller.user.name}" size="25">
+						    	<f:event type="javax.faces.event.PostValidateEvent" listener="#{logincontroller.postValidateName}"/>
+						    </h:inputText>
+						    
+						    <h:outputText class="mt-2" value="Passwort" />
+						    <h:inputSecret id="pwd" class="ms-4 mt-2" label="Passwort" value="{logincontroller.user.pwd}" required="true" validator="#{logincontroller.validateLogin}" size="25" />
+						    
+					</h:panelGrid>
+					<h:messages styleClass="error"/>
+					<div class="mt-5">
+						<h:commandButton value="Login" action="#{logincontroller.login()}" styleClass="btn"/>
+					</div>
+			 	</h:form>
+		 	</div>
+		 </div>
+	</div>
+
+	<!-- Footer -->
+	<div  class="footer bg-light" >
+		<div class="mt-auto py-3 " >
+			<div>
+				<p class="text-center text-muted">Achtung: Diese Seite ist nur ein Prototyp</p>
+			</div>
+			<div class="py-2 my-2 border-top">
+	  			<p class="text-center text-muted">&copy; 2022 code-caro</p>
+			</div>
+		</div>
+	</div>
+	
+</body> 
+</html>

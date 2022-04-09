@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:mj="http://mojarra.dev.java.net/mojarra_ext"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Testmanagement - Testfälle</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</h:head> 
+<body> 
+	<div class="site">
+	<!-- Header -->
+		<div id="header" class="bg-dark text-white">
+			<div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<div class="headerElementL boxL my-2">
+					<a href="index.xhtml" class="text-white text-decoration-none">
+						Testmanagement
+					</a>
+				</div>
+				<div class="headerElementR boxR mb-1 dropdown-menu dropdown">
+					<div class="dropbtn nav-link active">
+						<img style="width: 100px" src="img/icon-settings.svg" />
+     					<i class="fa fa-caret-down"></i>
+   					</div>
+  					<div class="dropdown-content">
+  						 <a href="settings.xhtml" class="nav-link active">Einstellungen</a>
+     					<a href="login.xhtml" class="nav-link active">Logout</a>
+     				</div>
+				</div>	    		
+			</div>
+		</div>
+		
+	    <!-- Navigation -->
+		<div id="navi" class="bg-light">
+			<div class="container d-flex flex-wrap">
+				<ul class="nav nav-tab me-auto my-auto;">
+					<li class="nav-item dropdown">
+   						<div class="dropbtn nav-link active">Basiselemente
+     							<i class="fa fa-caret-down"></i>
+   						</div>
+  						<div class="dropdown-content">
+  						 	<a href="requirements.xhtml" class="nav-link active">Anforderungen</a>
+     						<a href="testcase.xhtml" class="nav-link active">Testfälle</a>
+     					</div>
+					</li>
+			        <li class="nav-item"><a href="tickets.xhtml" class="nav-link link-dark">Tickets</a></li>
+			        <li class="nav-item"><a href="dashboard.xhtml" class="nav-link link-dark">Dashboard</a></li>    
+		      	</ul>  		
+			</div>
+		</div>
+		
+		<!-- Content -->
+		<div class= "main">
+			<div class="container">
+				<h1 class="pt-3 my-3">Übersicht Testfälle</h1>
+			</div>
+			
+			<div class="container">
+				<h:form>
+					<div class= "mt-3 mb-4">
+			    		<h:commandButton value="Neues Element erstellen" action="#{testcasecontroller.createNewCase}" styleClass="btn ms-4"/>
+					</div>
+					
+					<p:dataTable sortBy="#{caseLoop.caseID}" sortOrder="ascending" var="caseLoop" value="#{testcasecontroller.caseList}" styleClass="table" rowClasses="even, odd">
+		
+						<p:column sortBy="#{caseLoop.caseName}" styleClass="columnlarge">
+							<f:facet name="header"><h:outputText value="Bezeichnung"></h:outputText></f:facet>
+							<p:accordionPanel activeIndex="null">
+								<p:tab title="#{caseLoop.caseName}">
+									<strong><h:outputText value="Beschreibung: "/></strong>
+									<h:outputText value="#{caseLoop.caseDescription}"/><br/>
+									<strong><h:outputText value="Ergebnis: "/></strong>
+									<h:outputText value="#{caseLoop.result}"/>
+								</p:tab>
+							</p:accordionPanel>
+						</p:column>	
+							
+			      		<p:column sortBy="#{caseLoop.caseReq}" styleClass="columnmedium">
+							<f:facet name="header"><h:outputText value="Anforderung"></h:outputText></f:facet>
+							<h:outputText value="#{caseLoop.reqCaseName}" />
+						</p:column>
+						
+				      	<p:column styleClass="columnsmall">
+					        <f:facet name="header"><h:outputText value="Aktion"></h:outputText></f:facet>
+					        <h:commandLink action="#{testcasecontroller.editSingleCase}" >
+					        	<img style="width: 30px" src="img/icon-edit.svg" />
+					        	<f:setPropertyActionListener target="#{testcasecontroller.singleCase}" value="#{caseLoop}" />
+					        </h:commandLink>
+					        <h:commandLink action="#{testcasecontroller.deleteSingleCase}" >
+					        	<img style="width: 30px" src="img/icon-delete.svg" />
+					        	<f:setPropertyActionListener target="#{testcasecontroller.singleCase}" value="#{caseLoop}" />
+					        </h:commandLink>
+				      	</p:column>
+				      	
+					</p:dataTable>  
+					  		
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div  class="footer bg-light" >
+		<div class="mt-auto py-3" >
+			<div>
+				<p class="text-center text-muted">Achtung: Diese Seite ist nur ein Prototyp</p>
+			</div>
+			<div class="py-2 my-2 border-top">
+	  			<p class="text-center text-muted">&copy; 2022 code-caro</p>
+			</div>
+		</div>
+	</div>
+	
+</body> 
+</html>
