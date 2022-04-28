@@ -8,5 +8,5 @@ Databasemanagement system:
 MySQL80, localhost:3306
 
 Webcontainer/Webserver: 
-Apache Tomcat 9.0, localhost:8080
+Apache Tomcat 9.0
 
